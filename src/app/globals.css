@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Source Serif 4", ui-serif, Georgia, serif;
+  --color-ink: #0f172a;
+  --color-ink-muted: #475569;
+  --color-surface: #f8fafc;
+  --color-accent: #1e3a5f;
+  --color-accent-light: #2d5a87;
+  /** Màu đậm cuối gradient header — src/data/HUONG-DAN.md */
+  --color-accent-dark: #152a45;
+  --color-border: #e2e8f0;
+  --color-highlight: #f1f5f9;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[var(--color-surface)] text-[var(--color-ink)] antialiased;
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 25%, transparent);
+  }
+}
+
+@media print {
+  @page {
+    margin: 1.2cm;
+    size: A4;
+  }
+
+  body {
+    background: white !important;
+    font-size: 11pt;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-break-inside-avoid {
+    break-inside: avoid;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #64748b;
+  }
+
+  a[href^="#"]::after,
+  a[href^="mailto"]::after,
+  a[href^="tel"]::after {
+    content: none;
+  }
+}
