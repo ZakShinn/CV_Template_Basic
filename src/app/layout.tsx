@@ -4,6 +4,7 @@ import { getThemeCssBlock } from "@/color/theme";
 import { getFontCssBlock } from "@/font/config";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { cv } from "@/data/cv";
+import { DEFAULT_AVATAR_SRC } from "@/avatar/config";
 import { buildPersonJsonLd } from "@/lib/seo";
 import "./globals.css";
 
@@ -37,6 +38,11 @@ export const metadata: Metadata = {
     description: cv.meta.description,
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: DEFAULT_AVATAR_SRC,
+    shortcut: DEFAULT_AVATAR_SRC,
+    apple: DEFAULT_AVATAR_SRC,
+  },
 };
 
 const personJsonLd = buildPersonJsonLd({

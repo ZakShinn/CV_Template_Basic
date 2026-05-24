@@ -19,7 +19,7 @@ export interface AvatarConfig {
   hideInPrint: boolean;
 }
 
-/** Ảnh đại diện — `public/avatar/anh_dai_dien.png` */
+/** Ảnh đại diện + favicon trình duyệt — `public/avatar/anh_dai_dien.png` */
 export const DEFAULT_AVATAR_SRC = "/avatar/anh_dai_dien.png";
 
 export const avatarConfig: AvatarConfig = {
