@@ -62,19 +62,26 @@ export function CVPage() {
   return (
     <div className="min-h-screen">
       {/* Toolbar */}
-      <div className="no-print sticky top-0 z-10 border-b border-[var(--color-border)] bg-white/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-5xl justify-end px-4 py-3 sm:px-6">
+      <div className="no-print sticky top-0 z-10 border-b border-[var(--color-border)]/80 bg-white/85 backdrop-blur-xl shadow-[0_1px_0_0_rgba(15,23,42,0.04)]">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--color-ink-muted)]">
+            CV · A4
+          </p>
           <PrintButton label={t.print} />
         </div>
       </div>
 
       <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
-        <article className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-sm shadow-slate-200/60">
+        <article className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-[0_24px_48px_-24px_rgba(15,23,42,0.18),0_0_0_1px_rgba(15,23,42,0.03)]">
+          <div
+            className="h-1 w-full bg-gradient-to-r from-[var(--color-accent-dark)] via-[var(--color-accent)] to-[var(--color-accent-light)]"
+            aria-hidden
+          />
           <CVHeader />
 
-          <div className="grid gap-0 lg:grid-cols-[300px_1fr]">
-            {/* Sidebar */}
-            <aside className="border-b border-[var(--color-border)] bg-[var(--color-highlight)] px-6 py-8 lg:border-b-0 lg:border-r">
+          <div className="grid gap-0 lg:grid-cols-[280px_1fr]">
+            {/* Sidebar — chuẩn CV: liên hệ & kỹ năng bên trái */}
+            <aside className="border-b border-[var(--color-border)] bg-gradient-to-b from-[var(--color-highlight)] via-[var(--color-highlight)]/60 to-white px-6 py-8 lg:border-b-0 lg:border-r">
               <nav aria-label="Liên hệ">
                 <ul className="space-y-3">
                   {cv.contact.map((item) => (
@@ -109,7 +116,7 @@ export function CVPage() {
                           {group.items.map((skill) => (
                             <li
                               key={skill}
-                              className="rounded-md border border-[var(--color-border)] bg-white px-2 py-0.5 text-xs text-[var(--color-ink)]"
+                              className="rounded-full border border-[var(--color-border)] bg-white px-2.5 py-0.5 text-xs text-[var(--color-ink)] shadow-sm"
                             >
                               {skill}
                             </li>
@@ -157,10 +164,10 @@ export function CVPage() {
               </Section>
 
               <Section id="experience" title={t.experience}>
-                <ol className="relative space-y-8 border-l-2 border-[var(--color-border)] pl-6">
+                <ol className="relative space-y-8 border-l-2 border-[var(--color-accent)]/20 pl-6">
                   {cv.experience.map((job) => (
-                    <li key={`${job.company}-${job.period}`} className="print-break-inside-avoid">
-                      <span className="absolute -left-[9px] mt-1.5 h-4 w-4 rounded-full border-2 border-white bg-[var(--color-accent)]" />
+                    <li key={`${job.company}-${job.period}`} className="print-break-inside-avoid relative">
+                      <span className="absolute -left-[9px] mt-1.5 h-4 w-4 rounded-full border-2 border-white bg-[var(--color-accent)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--color-accent)_15%,transparent)]" />
                       <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                         <div>
                           <h3 className="font-semibold text-[var(--color-ink)]">{job.role}</h3>
@@ -215,7 +222,7 @@ export function CVPage() {
                     {cv.projects.map((project) => (
                       <li
                         key={project.name}
-                        className="rounded-lg border border-[var(--color-border)] bg-[var(--color-highlight)]/50 p-4 print-break-inside-avoid"
+                        className="rounded-xl border border-[var(--color-border)] bg-gradient-to-br from-[var(--color-highlight)]/80 to-white p-4 print-break-inside-avoid shadow-sm"
                       >
                         <div className="flex flex-wrap items-baseline justify-between gap-2">
                           {project.link ? (

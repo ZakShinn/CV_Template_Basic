@@ -18,7 +18,7 @@ function TagList({ items }: { items: readonly string[] }) {
       {items.map((item) => (
         <li
           key={item}
-          className="rounded-md border border-[var(--color-border)] bg-white px-2 py-0.5 text-xs text-[var(--color-ink)]"
+          className="rounded-full border border-[var(--color-border)] bg-white px-2.5 py-0.5 text-xs text-[var(--color-ink)] shadow-sm"
         >
           {item}
         </li>

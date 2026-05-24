@@ -2,6 +2,10 @@
 
 Trang CV cá nhân chuyên nghiệp, dễ chỉnh sửa, deploy miễn phí trên [Vercel](https://vercel.com).
 
+## Layout chuẩn
+
+Hai cột A4: **sidebar trái** (liên hệ, kỹ năng, ngôn ngữ) · **cột phải** (tóm tắt, kinh nghiệm, học vấn, dự án). Phù hợp IT, kinh doanh, sinh viên.
+
 ## Cấu trúc CV
 
 | Section | File cấu hình |
@@ -18,47 +22,21 @@ Trang CV cá nhân chuyên nghiệp, dễ chỉnh sửa, deploy miễn phí trê
 | Ngôn ngữ | `languages` |
 | Người tham chiếu (tùy chọn) | `references` |
 
-**Hướng dẫn** (dữ liệu, màu, font, ảnh, PDF): [`src/data/HUONG_DAN_NHAP_LIEU.md`](src/data/HUONG_DAN_NHAP_LIEU.md)
+**Hướng dẫn chi tiết:** [`src/data/HUONG_DAN_NHAP_LIEU.md`](src/data/HUONG_DAN_NHAP_LIEU.md)
 
 **Nội dung CV:** `src/data/cv.ts`
 
-## Chạy local
+## Chỉnh sửa & xem thay đổi
 
-```bash
-npm install
-npm run dev
-```
+1. Mở và sửa `src/data/cv.ts` (và file cấu hình trong `src/color/`, `src/font/`, `src/avatar/` nếu cần).
+2. Lưu file và làm mới trình duyệt trên trang xem CV.
+3. Deploy: đẩy lên GitHub → import trên [vercel.com/new](https://vercel.com/new) → Framework Next.js (tự nhận).
 
-Mở [http://localhost:3000](http://localhost:3000).
-
-## Deploy lên Vercel
-
-1. Đẩy repo lên GitHub.
-2. Vào [vercel.com/new](https://vercel.com/new) → Import repository.
-3. Framework: **Next.js** (tự nhận diện).
-4. Deploy — không cần biến môi trường.
-
-Hoặc dùng CLI:
-
-```bash
-npx vercel
-```
-
-Sau khi deploy, cập nhật `meta.siteUrl` trong `cv.ts` bằng URL Vercel thật (SEO / Open Graph).
+Sau deploy, cập nhật `meta.siteUrl` trong `cv.ts` bằng URL thật (SEO / Open Graph).
 
 ## In hoặc xuất PDF
 
-Trên trang web, bấm **In / PDF** (hoặc `Ctrl+P` / `Cmd+P`) → chọn **Save as PDF**.
-
-## Ảnh đại diện
-
-Cấu hình tại `src/avatar/config.ts`. Đặt file trong `public/` và ghi:
-
-```ts
-src: "/avatar.jpg",
-```
-
-Để trống `src` sẽ hiển thị chữ cái đầu tên.
+Bấm **In / PDF** trên toolbar hoặc **Ctrl+P** → khổ **A4** → **Save as PDF**. Bật **In nền** nếu muốn giữ màu sidebar.
 
 ## Ngôn ngữ
 
@@ -66,6 +44,4 @@ src: "/avatar.jpg",
 
 ## Tech stack
 
-- Next.js 15 · React 19 · TypeScript
-- Tailwind CSS 4
-- Tối ưu in ấn (A4)
+Next.js 15 · React 19 · TypeScript · Tailwind CSS 4 · tối ưu in A4

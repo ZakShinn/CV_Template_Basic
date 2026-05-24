@@ -10,9 +10,9 @@ export const colors = {
   ink: "#0f172a",
   inkMuted: "#475569",
   surface: "#f8fafc",
-  accent: "#1e3a5f",
-  accentLight: "#2d5a87",
-  accentDark: "#152a45",
+  accent: "#1e40af",
+  accentLight: "#2563eb",
+  accentDark: "#1e3a8a",
   border: "#e2e8f0",
   highlight: "#f1f5f9",
 } as const;

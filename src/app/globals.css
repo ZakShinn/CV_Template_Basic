@@ -8,8 +8,20 @@
   }
 
   body {
-    @apply bg-[var(--color-surface)] text-[var(--color-ink)] antialiased;
+    @apply text-[var(--color-ink)] antialiased;
     font-family: var(--font-sans);
+    background-color: var(--color-surface);
+    background-image:
+      radial-gradient(
+        ellipse 90% 60% at 50% -15%,
+        color-mix(in srgb, var(--color-accent) 10%, transparent),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 50% 40% at 100% 100%,
+        color-mix(in srgb, var(--color-accent-light) 6%, transparent),
+        transparent 50%
+      );
   }
 
   ::selection {

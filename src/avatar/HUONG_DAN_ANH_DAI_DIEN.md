@@ -13,7 +13,7 @@ src: "/avatar.jpg",
 alt: "Nguyễn Văn A",
 ```
 
-3. Lưu → `npm run dev`.
+3. Lưu file và làm mới trình duyệt.
 
 Không cần sửa `cv.ts`.
 
