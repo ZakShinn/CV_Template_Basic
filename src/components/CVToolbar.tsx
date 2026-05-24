@@ -1,20 +1,27 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import type { CVContent } from "@/data/cv";
 import { ExportToolbar } from "./ExportToolbar";
 
 type CVLocale = "vi" | "en";
 
 const uiLabels = {
-  vi: { print: "In CV", pdf: "Tải PDF", docx: "Tải DOCX", switchLang: "EN" },
-  en: { print: "Print", pdf: "Download PDF", docx: "Download DOCX", switchLang: "VI" },
+  vi: { print: "In CV", pdf: "Tải PDF", docx: "Tải DOCX", switchLang: "English", translating: "Đang dịch…" },
+  en: { print: "Print", pdf: "Download PDF", docx: "Download DOCX", switchLang: "Tiếng Việt", translating: "Translating…" },
 } as const;
 
 export function CVToolbar({
   locale,
+  loading,
+  error,
+  cvData,
   onToggleLocale,
 }: {
   locale: CVLocale;
+  loading?: boolean;
+  error?: string | null;
+  cvData: CVContent;
   onToggleLocale: () => void;
 }) {
   const { setTheme, resolvedTheme } = useTheme();
@@ -23,23 +30,29 @@ export function CVToolbar({
 
   return (
     <div className="flex flex-wrap items-center gap-2">
+      {error && (
+        <span className="text-xs text-red-600 dark:text-red-400" role="alert">
+          {error}
+        </span>
+      )}
       <button
         type="button"
         onClick={onToggleLocale}
-        className="rounded-lg border border-[var(--color-border)] bg-white px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-ink-muted)] transition hover:border-[var(--color-accent)] dark:bg-slate-800 dark:border-slate-600 dark:text-slate-300"
+        disabled={loading}
+        className="rounded-lg border border-[var(--color-border)] bg-white px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-ink-muted)] transition hover:border-[var(--color-accent)] disabled:opacity-60 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300"
         aria-label="Switch language"
       >
-        {ui.switchLang}
+        {loading ? ui.translating : ui.switchLang}
       </button>
       <button
         type="button"
         onClick={() => setTheme(isDark ? "light" : "dark")}
-        className="rounded-lg border border-[var(--color-border)] bg-white px-3 py-2 text-xs font-medium text-[var(--color-ink-muted)] transition hover:border-[var(--color-accent)] dark:bg-slate-800 dark:border-slate-600 dark:text-slate-300"
+        className="rounded-lg border border-[var(--color-border)] bg-white px-3 py-2 text-xs font-medium text-[var(--color-ink-muted)] transition hover:border-[var(--color-accent)] dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300"
         aria-label={isDark ? "Light mode" : "Dark mode"}
       >
         {isDark ? "☀" : "☾"}
       </button>
-      <ExportToolbar labels={{ print: ui.print, pdf: ui.pdf, docx: ui.docx }} />
+      <ExportToolbar labels={{ print: ui.print, pdf: ui.pdf, docx: ui.docx }} cvData={cvData} locale={locale} />
     </div>
   );
 }

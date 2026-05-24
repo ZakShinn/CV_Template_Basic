@@ -1,5 +1,5 @@
-import { avatarConfig } from "@/avatar/config";
-import { cv } from "@/data/cv";
+import { avatarConfig, resolveAvatarSrc } from "@/avatar/config";
+import type { CVContent } from "@/data/cv";
 
 function getInitials(name: string) {
   return name
@@ -10,10 +10,11 @@ function getInitials(name: string) {
     .join("");
 }
 
-export function CVHeader() {
-  const initials = getInitials(cv.personal.fullName);
-  const showAvatar = avatarConfig.enabled && avatarConfig.src;
-  const avatarAlt = avatarConfig.alt || cv.personal.fullName;
+export function CVHeader({ data }: { data: CVContent }) {
+  const initials = getInitials(data.personal.fullName);
+  const avatarSrc = resolveAvatarSrc();
+  const showAvatar = avatarConfig.enabled && Boolean(avatarSrc);
+  const avatarAlt = avatarConfig.alt || data.personal.fullName;
 
   return (
     <header className="relative overflow-hidden border-b border-[var(--color-border)] bg-gradient-to-b from-white via-white to-[var(--color-highlight)]/50">
@@ -36,7 +37,7 @@ export function CVHeader() {
               {showAvatar ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={avatarConfig.src}
+                  src={avatarSrc}
                   alt={avatarAlt}
                   className="h-full w-full"
                   style={{ objectFit: avatarConfig.objectFit }}
@@ -62,16 +63,16 @@ export function CVHeader() {
           {/* Tên & thông tin */}
           <div className="min-w-0 flex-1 text-center md:text-left">
             <h1 className="font-serif text-[1.75rem] font-semibold leading-[1.15] tracking-tight text-[var(--color-ink)] sm:text-[2.125rem] lg:text-[2.375rem]">
-              {cv.personal.fullName}
+              {data.personal.fullName}
             </h1>
 
             <div className="mx-auto mt-3 h-px w-12 bg-[var(--color-accent)] md:mx-0" aria-hidden />
 
             <p className="mt-3 text-base font-medium text-[var(--color-accent)] sm:text-lg">
-              {cv.personal.title}
+              {data.personal.title}
             </p>
 
-            {cv.personal.location && (
+            {data.personal.location && (
               <p className="mt-2 flex items-center justify-center gap-1.5 text-sm text-[var(--color-ink-muted)] md:justify-start">
                 <svg
                   className="h-4 w-4 shrink-0 text-[var(--color-accent-light)]/80"
@@ -84,13 +85,13 @@ export function CVHeader() {
                   <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" />
                   <circle cx="12" cy="10" r="2.5" />
                 </svg>
-                {cv.personal.location}
+                {data.personal.location}
               </p>
             )}
 
-            {cv.personal.tagline && (
+            {data.personal.tagline && (
               <p className="mx-auto mt-5 max-w-xl border-t border-[var(--color-border)] pt-5 text-sm leading-[1.7] text-[var(--color-ink-muted)] md:mx-0 sm:text-[0.9375rem]">
-                {cv.personal.tagline}
+                {data.personal.tagline}
               </p>
             )}
           </div>

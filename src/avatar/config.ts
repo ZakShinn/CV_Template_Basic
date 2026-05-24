@@ -8,9 +8,9 @@
 export type AvatarObjectFit = "cover" | "contain";
 
 export interface AvatarConfig {
-  /** `true` = hiển thị ảnh khi có `src`; `false` = luôn dùng chữ cái đầu */
+  /** `true` = hiển thị avatar (ảnh hoặc chữ cái đầu); `false` = ẩn hoàn toàn */
   enabled: boolean;
-  /** Đường dẫn từ `public/`, vd: `/avatar.jpg` */
+  /** Đường dẫn từ `public/`, vd: `/avatar/anh-cua-toi.jpg` — để trống dùng placeholder mẫu */
   src: string;
   /** Mô tả ảnh (accessibility) — để trống sẽ dùng họ tên từ cv.ts */
   alt: string;
@@ -19,10 +19,20 @@ export interface AvatarConfig {
   hideInPrint: boolean;
 }
 
+/** Ảnh mẫu khi chưa thay ảnh thật — `public/avatar/placeholder.svg` */
+export const DEFAULT_AVATAR_SRC = "/avatar/placeholder.svg";
+
 export const avatarConfig: AvatarConfig = {
   enabled: true,
-  src: "",
-  alt: "",
+  src: DEFAULT_AVATAR_SRC,
+  alt: "Ảnh đại diện — thay bằng ảnh của bạn",
   objectFit: "cover",
   hideInPrint: false,
 };
+
+/** URL hiển thị — ưu tiên `src` tùy chỉnh, sau đó placeholder mẫu */
+export function resolveAvatarSrc(customSrc?: string): string {
+  if (!avatarConfig.enabled) return "";
+  const custom = customSrc?.trim() || avatarConfig.src.trim();
+  return custom || DEFAULT_AVATAR_SRC;
+}

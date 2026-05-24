@@ -1,4 +1,4 @@
-import { cv } from "@/data/cv";
+import type { CVContent } from "@/data/cv";
 import { Section } from "./Section";
 
 type PersonalLabels = {
@@ -9,6 +9,7 @@ type PersonalLabels = {
 };
 
 type PersonalInfoSectionsProps = {
+  data: CVContent;
   labels: PersonalLabels;
 };
 
@@ -27,8 +28,8 @@ function TagList({ items }: { items: readonly string[] }) {
   );
 }
 
-export function PersonalInfoSections({ labels }: PersonalInfoSectionsProps) {
-  const { motto, softSkills, interests, aspirations } = cv.personalInfo;
+export function PersonalInfoSections({ data, labels }: PersonalInfoSectionsProps) {
+  const { motto, softSkills, interests, aspirations } = data.personalInfo;
 
   const hasMotto = motto.trim().length > 0;
   const hasSoftSkills = softSkills.length > 0;

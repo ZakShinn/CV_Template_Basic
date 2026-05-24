@@ -38,9 +38,9 @@ Sau deploy, cập nhật `meta.siteUrl` trong `cv.ts` bằng URL thật (SEO / O
 
 Bấm **In / PDF** trên toolbar hoặc **Ctrl+P** → khổ **A4** → **Save as PDF**. Bật **In nền** nếu muốn giữ màu sidebar.
 
-## Ngôn ngữ
+## Ngôn ngữ (Việt / Anh)
 
-Đổi `personal.locale` thành `"en"` để hiển thị nhãn section tiếng Anh.
+**Chỉ nhập tiếng Việt** trong `cv.ts`. Bấm **English** trên toolbar — CV được dịch tự động (Lingva / MyMemory, miễn phí, không cần API key).
 
 ## Tech stack
 

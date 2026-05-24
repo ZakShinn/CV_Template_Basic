@@ -57,15 +57,5 @@ export function getThemeCssBlock(
     `  --color-border: ${palette.border};`,
     `  --color-highlight: ${palette.highlight};`,
     "}",
-    ".dark {",
-    "  --color-ink: #f1f5f9;",
-    "  --color-ink-muted: #94a3b8;",
-    "  --color-surface: #0f172a;",
-    "  --color-accent: #60a5fa;",
-    "  --color-accent-light: #93c5fd;",
-    "  --color-accent-dark: #1e3a8a;",
-    "  --color-border: #334155;",
-    "  --color-highlight: #1e293b;",
-    "}",
   ].join("\n");
 }

@@ -17,15 +17,19 @@ Mẫu CV **một trang**, hai cột — phù hợp IT, kinh doanh tổng quát, 
 | **Cột trái (sidebar)** | Liên hệ, kỹ năng mềm, kỹ năng kỹ thuật, ngôn ngữ, chứng chỉ | ~30% chiều rộng — ATS vẫn đọc được |
 | **Cột phải (main)** | Tóm tắt → Kinh nghiệm → Học vấn → Dự án → Tham chiếu | Ưu tiên bullet có số liệu |
 
-## Ngôn ngữ nhãn section
+## Ngôn ngữ (Việt / Anh)
 
-Đặt `personal.locale`: `"vi"` hoặc `"en"` trong `cv.ts`. Nhãn section chỉnh trong `src/components/CVPage.tsx` → object `labels`.
+**Chỉ nhập nội dung tiếng Việt** trong `cv.ts`. Trên website, bấm **English** — hệ thống dịch tự động sang tiếng Anh qua dịch vụ miễn phí (Lingva / MyMemory, không cần API key).
+
+- Email, SĐT, URL, tên công nghệ (React, AWS…) được giữ nguyên.
+- Lần đầu bấm English có thể mất vài giây (dịch toàn bộ CV).
+- Tùy chọn: thêm `MYMEMORY_EMAIL=email@domain.com` trong `.env.local` để tăng giới hạn MyMemory.
 
 ## Các khối dữ liệu trong `cv.ts`
 
 | Khối | Ghi chú |
 |------|---------|
-| `personal` | Họ tên, chức danh, tagline, địa điểm, locale |
+| `personal` | Họ tên, chức danh, tagline, địa điểm |
 | `summary` | Tóm tắt 3–5 câu, nêu năm kinh nghiệm và điểm mạnh |
 | `personalInfo` | Phương châm, kỹ năng mềm, sở thích, mong muốn — `""` / `[]` để ẩn |
 | `contact` | Email, phone, LinkedIn… — mảng `{ label, href, icon }` |

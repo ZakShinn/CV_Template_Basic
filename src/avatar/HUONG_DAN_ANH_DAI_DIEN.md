@@ -2,14 +2,16 @@
 
 Ảnh tròn trên header cấu hình tại **[`config.ts`](./config.ts)**.
 
-## Thêm ảnh
+## Thêm ảnh của bạn
 
-1. Đặt ảnh vào `public/` (vd: `public/avatar.jpg`).
+Mỗi CV đều có **avatar mặc định** (ảnh mẫu). Để thay bằng ảnh thật:
+
+1. Đặt ảnh vào `public/avatar/` (vd: `public/avatar/anh-cua-toi.jpg`).
 2. Mở `src/avatar/config.ts`:
 
 ```ts
 enabled: true,
-src: "/avatar.jpg",
+src: "/avatar/anh-cua-toi.jpg",
 alt: "Nguyễn Văn A",
 ```
 
@@ -17,20 +19,23 @@ alt: "Nguyễn Văn A",
 
 Không cần sửa `cv.ts`.
 
-## Không dùng ảnh
+## Ảnh mẫu
+
+Mặc định: `public/avatar/placeholder.svg` — CV hiển thị avatar ngay khi clone template.
+
+## Tắt avatar
 
 ```ts
-enabled: true,
-src: "",
+enabled: false,
 ```
 
-Trang hiển thị **2 chữ cái đầu** họ tên (vd: Nguyễn Văn A → **VA**).
+Khi tắt, Basic hiển thị **2 chữ cái đầu** họ tên (vd: Nguyễn Văn A → **VA**).
 
 ## Các tuỳ chọn
 
 | Trường | Ý nghĩa |
 |--------|---------|
-| `enabled` | `false` = luôn dùng chữ cái đầu |
+| `enabled` | `false` = ẩn avatar (Basic: dùng chữ cái đầu) |
 | `src` | Đường dẫn từ `public/` hoặc URL HTTPS |
 | `alt` | Mô tả accessibility — trống = dùng họ tên |
 | `objectFit` | `cover` hoặc `contain` |

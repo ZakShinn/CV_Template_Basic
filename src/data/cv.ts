@@ -1,6 +1,9 @@
 /**
  * Nội dung CV — Basic template
  *
+ * ⚠️ CHỈ NHẬP NỘI DUNG BẰNG TIẾNG VIỆT tại file này.
+ * Bản tiếng Anh: bấm "English" trên website (dịch tự động qua Lingva / MyMemory).
+ *
  * Hướng dẫn: src/data/HUONG_DAN_NHAP_LIEU.md
  * Màu: src/color/theme.ts
  * Font: src/font/config.ts
@@ -53,6 +56,35 @@ export type Language = {
   level: string;
 };
 
+export type CVContent = {
+  personal: {
+    fullName: string;
+    title: string;
+    tagline: string;
+    location: string;
+  };
+  summary: string;
+  personalInfo: {
+    motto: string;
+    softSkills: string[];
+    interests: string[];
+    aspirations: string;
+  };
+  contact: ContactLink[];
+  experience: Experience[];
+  education: Education[];
+  skills: SkillGroup[];
+  projects: Project[];
+  certifications: Certification[];
+  languages: Language[];
+  references: { name: string; role: string; contact: string }[];
+  meta: {
+    siteTitle: string;
+    description: string;
+    siteUrl: string;
+  };
+};
+
 export const cv = {
   /** Thông tin cá nhân */
   personal: {
@@ -60,8 +92,6 @@ export const cv = {
     title: "Software Engineer",
     tagline: "Xây dựng sản phẩm web hiệu năng cao, dễ bảo trì",
     location: "Hồ Chí Minh, Việt Nam",
-    /** Ngôn ngữ hiển thị trang: "vi" | "en" */
-    locale: "vi" as const,
   },
 
   /** Tóm tắt nghề nghiệp (3–5 câu) */
@@ -186,6 +216,7 @@ export const cv = {
     /** URL sau khi deploy Vercel, ví dụ: https://cv-basic.vercel.app */
     siteUrl: "https://your-cv.vercel.app",
   },
-} as const;
+} satisfies CVContent;
 
+/** Dữ liệu mẫu — luôn nhập tiếng Việt */
 export type CVData = typeof cv;

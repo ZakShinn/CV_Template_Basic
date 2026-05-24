@@ -2,14 +2,20 @@
 
 /* Màu & font: src/color/theme.ts, src/font/config.ts — inject trong layout.tsx */
 
+@theme {
+  --font-sans: var(--font-dm-sans), "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), "Source Serif 4", ui-serif, Georgia, serif;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply text-[var(--color-ink)] antialiased;
+    @apply antialiased;
     font-family: var(--font-sans);
+    color: var(--color-ink);
     background-color: var(--color-surface);
     background-image:
       radial-gradient(
@@ -24,9 +30,32 @@
       );
   }
 
+  /* Dark mode chỉ áp dụng cho khung trang — CV giữ palette sáng in/PDF */
+  .dark body {
+    color: #e2e8f0;
+    background-color: #0f172a;
+    background-image:
+      radial-gradient(
+        ellipse 90% 60% at 50% -15%,
+        color-mix(in srgb, #3b82f6 12%, transparent),
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 50% 40% at 100% 100%,
+        color-mix(in srgb, #60a5fa 8%, transparent),
+        transparent 50%
+      );
+  }
+
   ::selection {
     background: color-mix(in srgb, var(--color-accent) 25%, transparent);
   }
+}
+
+/* CV luôn dùng màu sáng — không bị ảnh hưởng bởi dark mode trang */
+.cv-paper {
+  color: var(--color-ink);
+  background-color: #ffffff;
 }
 
 @media print {

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: cv.meta.description,
     type: "website",
     url: cv.meta.siteUrl,
-    locale: cv.personal.locale === "vi" ? "vi_VN" : "en_US",
+    locale: "vi_VN",
   },
   twitter: {
     card: "summary_large_image",
@@ -54,7 +54,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang={cv.personal.locale}
+      lang="vi"
       className={`${beVietnam.variable} ${sourceSerif.variable}`}
       suppressHydrationWarning
     >

@@ -5,7 +5,8 @@ import {
   Paragraph,
   TextRun,
 } from "docx";
-import { cv } from "@/data/cv";
+import type { CVContent } from "@/data/cv";
+import type { CVLocale } from "@/components/CVToolbar";
 
 const sectionTitles = {
   vi: {
@@ -28,26 +29,25 @@ const sectionTitles = {
   },
 } as const;
 
-export async function exportCvToDocx(): Promise<Blob> {
-  const locale = cv.personal.locale;
+export async function exportCvToDocx(data: CVContent, locale: CVLocale = "vi"): Promise<Blob> {
   const t = sectionTitles[locale];
   const children: Paragraph[] = [];
 
   children.push(
     new Paragraph({
       heading: HeadingLevel.TITLE,
-      children: [new TextRun({ text: cv.personal.fullName, bold: true, size: 32 })],
+      children: [new TextRun({ text: data.personal.fullName, bold: true, size: 32 })],
     }),
     new Paragraph({
-      children: [new TextRun({ text: cv.personal.title, size: 24, color: "1e40af" })],
+      children: [new TextRun({ text: data.personal.title, size: 24, color: "1e40af" })],
     }),
   );
 
-  if (cv.personal.location) {
-    children.push(new Paragraph({ children: [new TextRun(cv.personal.location)] }));
+  if (data.personal.location) {
+    children.push(new Paragraph({ children: [new TextRun(data.personal.location)] }));
   }
 
-  const contacts = cv.contact
+  const contacts = data.contact
     .filter((c) => c.icon !== "location")
     .map((c) => c.label)
     .join(" | ");
@@ -58,12 +58,12 @@ export async function exportCvToDocx(): Promise<Blob> {
 
   children.push(
     new Paragraph({ heading: HeadingLevel.HEADING_1, text: t.summary }),
-    new Paragraph({ children: [new TextRun(cv.summary)] }),
+    new Paragraph({ children: [new TextRun(data.summary)] }),
     new Paragraph({ text: "" }),
   );
 
   children.push(new Paragraph({ heading: HeadingLevel.HEADING_1, text: t.experience }));
-  for (const job of cv.experience) {
+  for (const job of data.experience) {
     children.push(
       new Paragraph({
         children: [
@@ -79,7 +79,7 @@ export async function exportCvToDocx(): Promise<Blob> {
   children.push(new Paragraph({ text: "" }));
 
   children.push(new Paragraph({ heading: HeadingLevel.HEADING_1, text: t.education }));
-  for (const edu of cv.education) {
+  for (const edu of data.education) {
     children.push(
       new Paragraph({
         text: `${edu.degree} — ${edu.school} (${edu.period})${edu.details ? `. ${edu.details}` : ""}`,
@@ -89,7 +89,7 @@ export async function exportCvToDocx(): Promise<Blob> {
   children.push(new Paragraph({ text: "" }));
 
   children.push(new Paragraph({ heading: HeadingLevel.HEADING_1, text: t.skills }));
-  for (const group of cv.skills) {
+  for (const group of data.skills) {
     children.push(
       new Paragraph({
         children: [
@@ -101,9 +101,9 @@ export async function exportCvToDocx(): Promise<Blob> {
   }
   children.push(new Paragraph({ text: "" }));
 
-  if (cv.projects.length > 0) {
+  if (data.projects.length > 0) {
     children.push(new Paragraph({ heading: HeadingLevel.HEADING_1, text: t.projects }));
-    for (const project of cv.projects) {
+    for (const project of data.projects) {
       children.push(new Paragraph({ children: [new TextRun({ text: project.name, bold: true })] }));
       if (project.description) {
         children.push(new Paragraph({ children: [new TextRun(project.description)] }));
@@ -115,17 +115,17 @@ export async function exportCvToDocx(): Promise<Blob> {
     children.push(new Paragraph({ text: "" }));
   }
 
-  if (cv.certifications.length > 0) {
+  if (data.certifications.length > 0) {
     children.push(new Paragraph({ heading: HeadingLevel.HEADING_1, text: t.certifications }));
-    for (const cert of cv.certifications) {
+    for (const cert of data.certifications) {
       children.push(new Paragraph({ text: `${cert.name} — ${cert.issuer} (${cert.year})` }));
     }
     children.push(new Paragraph({ text: "" }));
   }
 
-  if (cv.languages.length > 0) {
+  if (data.languages.length > 0) {
     children.push(new Paragraph({ heading: HeadingLevel.HEADING_1, text: t.languages }));
-    for (const lang of cv.languages) {
+    for (const lang of data.languages) {
       children.push(new Paragraph({ text: `${lang.name} — ${lang.level}` }));
     }
   }

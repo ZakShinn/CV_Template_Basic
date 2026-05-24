@@ -33,8 +33,8 @@ export const fonts = {
 export function getFontCssBlock(theme = fonts): string {
   return [
     ":root {",
-    `  --font-sans: "${theme.sans.family}", ui-sans-serif, system-ui, sans-serif;`,
-    `  --font-serif: "${theme.serif.family}", ui-serif, Georgia, serif;`,
+    `  --font-sans: var(${theme.sans.variable}), "${theme.sans.family}", ui-sans-serif, system-ui, sans-serif;`,
+    `  --font-serif: var(${theme.serif.variable}), "${theme.serif.family}", ui-serif, Georgia, serif;`,
     "}",
   ].join("\n");
 }
