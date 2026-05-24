@@ -21,7 +21,7 @@ Không cần sửa `cv.ts`.
 
 ## Ảnh mẫu
 
-Mặc định: `public/avatar/placeholder.svg` — CV hiển thị avatar ngay khi clone template.
+Mặc định: `public/avatar/anh_dai_dien.png` — thay file này bằng ảnh của bạn (giữ tên hoặc đổi `src` trong config).
 
 ## Tắt avatar
 
