@@ -1,7 +1,9 @@
 /**
  * ═══════════════════════════════════════════════════════════════
  *  NỘI DUNG NÂNG CAO CV & TRANG WEB — chỉnh tại file này
- *  Hướng dẫn: src/README.md
+ *  Hướng dẫn: src/HuongDan.md
+ *
+ * Mảng rỗng [] hoặc xóa dòng — trang vẫn chạy bình thường.
  * ═══════════════════════════════════════════════════════════════
  */
 

@@ -27,10 +27,18 @@ const sourceSerif = Source_Serif_4({
   adjustFontFallback: true,
 });
 
+const siteBaseUrl = cv.meta.siteUrl ? (() => {
+  try {
+    return new URL(cv.meta.siteUrl);
+  } catch {
+    return undefined;
+  }
+})() : undefined;
+
 export const metadata: Metadata = {
   title: cv.meta.siteTitle,
   description: cv.meta.description,
-  metadataBase: cv.meta.siteUrl ? new URL(cv.meta.siteUrl) : undefined,
+  metadataBase: siteBaseUrl,
   openGraph: {
     title: cv.meta.siteTitle,
     description: cv.meta.description,
@@ -49,12 +57,18 @@ export const metadata: Metadata = {
         index: false,
         follow: false,
         nocache: true,
+        noarchive: true,
+        nosnippet: true,
+        noimageindex: true,
         googleBot: {
           index: false,
           follow: false,
           noimageindex: true,
+          noarchive: true,
+          nosnippet: true,
           "max-image-preview": "none",
           "max-snippet": -1,
+          "max-video-preview": -1,
         },
       },
   icons: {

@@ -1,4 +1,5 @@
-import { cv, type CVContent } from "@/resume";
+import { cv } from "@/resume";
+import { normalizeCV } from "@/lib/normalize-cv";
 import { translateCVData } from "@/lib/translate-cv";
 import { NextResponse } from "next/server";
 
@@ -6,14 +7,18 @@ export const maxDuration = 60;
 
 export async function POST(request: Request) {
   try {
-    let body: CVContent = JSON.parse(JSON.stringify(cv)) as CVContent;
+    let body = cv;
     const contentType = request.headers.get("content-type");
     if (contentType?.includes("application/json")) {
       const parsed = await request.json();
-      if (parsed && typeof parsed === "object") body = parsed as CVContent;
+      if (parsed && typeof parsed === "object") {
+        body = normalizeCV(parsed as Record<string, unknown>);
+      }
     }
 
-    const translated = await translateCVData(body);
+    const translated = normalizeCV(
+      (await translateCVData(body)) as unknown as Record<string, unknown>,
+    );
     return NextResponse.json({ data: translated });
   } catch (e) {
     console.error("[translate]", e);

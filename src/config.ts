@@ -49,7 +49,8 @@ export const displayConfig = {
     docxExport: true, // Nút Tải DOCX
     accentBar: true, // Thanh gradient màu trên đầu khung CV
     pageFooter: true, // Trang trí dưới trang (ngoài khung CV, không in)
-    allowSearchIndexing: false, // `true` = cho Google index · `false` = chặn (robots.txt + noindex)
+    /** `false` = chặn Google/Bing index (mặc định). Đổi `true` chỉ khi muốn lên tìm kiếm */
+    allowSearchIndexing: false,
   },
 } as const; // Khóa kiểu — tránh sửa nhầm tên key
 

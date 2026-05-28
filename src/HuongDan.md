@@ -183,6 +183,26 @@ Mỗi dòng trong object `colors` có **ghi chú** giải thích dùng cho phầ
 - **Ctrl+P** / **In CV** → A4, bật *In nền*  
 - Deploy Vercel → cập nhật `meta.siteUrl` trong `resume-advanced.ts`
 
+## Xóa dữ liệu không cần
+
+- **Liên hệ:** xóa cả object `{ label, href, icon }` trong `contact`.
+- **Section nâng cao:** để `projects: []`, `certifications: []`, `references: []` hoặc xóa hết phần tử trong mảng.
+- **Chuỗi:** `summary: ""`, `tagline: ""`, `motto: ""` → section tự ẩn.
+- **Không xóa** cả khối `personal` (cần ít nhất họ tên — nếu trống sẽ dùng placeholder).
+- Dữ liệu được **làm sạch tự động** trong `resume.ts` — không cần sửa code React.
+
+## Chặn Google tìm kiếm
+
+Trong **`config.ts`**:
+
+```ts
+allowSearchIndexing: false,  // mặc định — giữ nguyên để chặn Google
+```
+
+Khi `false`, trang có: `noindex` meta, `robots.txt` chặn toàn site (kể cả Googlebot), header `X-Robots-Tag`, không có sitemap.
+
+Muốn cho Google index → đổi thành `true`, build/deploy lại.
+
 ## Hiệu năng (đã tối ưu sẵn)
 
 - Trang tải **không** gói thư viện PDF/DOCX — chỉ tải khi bấm Tải PDF / Tải DOCX.

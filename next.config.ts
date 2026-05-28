@@ -28,7 +28,12 @@ const nextConfig: NextConfig = {
     if (!isSearchIndexingAllowed()) {
       rules.push({
         source: "/:path*",
-        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, noarchive, nosnippet, noimageindex",
+          },
+        ],
       });
     }
 

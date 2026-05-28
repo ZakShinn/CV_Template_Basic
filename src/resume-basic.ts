@@ -6,6 +6,8 @@
  *
  * ⚠️ CHỈ NHẬP NỘI DUNG BẰNG TIẾNG VIỆT.
  * Bản tiếng Anh: bấm "English" trên website (dịch tự động).
+ *
+ * Có thể xóa từng dòng trong `contact`, để `[]` hoặc `""` — trang vẫn chạy bình thường.
  */
 
 import type { ContactLink } from "./resume-types";
@@ -41,6 +43,11 @@ export const resumeBasic = {
 
   /** Thêm/xóa dòng — icon có sẵn & cách thêm mạng khác: src/HuongDan.md */
   contact: [
+    {
+      label: "nghiasoothsayer@gmail.com",
+      href: "mailto:nghiasoothsayer@gmail.com",
+      icon: "email",
+    },
     { label: "0968.884.946", href: "tel:+84968884946", icon: "phone" },
     { label: "github.com/ZakShinn", href: "https://github.com/ZakShinn", icon: "github" },
     {
