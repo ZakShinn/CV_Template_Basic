@@ -1,7 +1,16 @@
 export type ContactLink = {
   label: string;
   href: string;
-  icon: "email" | "phone" | "location" | "linkedin" | "github" | "website";
+  icon:
+    | "email"
+    | "phone"
+    | "location"
+    | "linkedin"
+    | "github"
+    | "website"
+    | "facebook"
+    | "zalo"
+    | "telegram";
 };
 
 export type Experience = {

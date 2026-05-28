@@ -4,7 +4,7 @@ Trang CV cá nhân, dễ chỉnh sửa, deploy miễn phí trên [Vercel](https:
 
 ## Hướng dẫn chỉnh sửa
 
-**Toàn bộ:** [`src/README.md`](src/README.md)
+**Toàn bộ:** [`src/HuongDan.md`](src/HuongDan.md) (gồm hướng dẫn thêm mạng xã hội)
 
 | File trong `src/` | Nội dung |
 |-------------------|----------|

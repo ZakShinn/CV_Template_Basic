@@ -11,46 +11,43 @@
 import type { ContactLink } from "./resume-types";
 
 export const resumeBasic = {
-  /** Thông tin cá nhân (header) */
   personal: {
-    fullName: "Nguyễn Văn A",
-    title: "Software Engineer",
-    tagline: "Xây dựng sản phẩm web hiệu năng cao, dễ bảo trì",
-    location: "Hồ Chí Minh, Việt Nam",
+    fullName: "Võ Hoàng Hải Nghĩa",
+    title: "Senior System Administrator / DevOps Engineer / Lead Developer",
+    tagline: "Nghĩa Zakshin · Sinh năm 06/09/1996",
+    location: "Phường Long An - Tỉnh Tây Ninh",
   },
 
-  /** Tóm tắt nghề nghiệp (3–5 câu) */
   summary:
-    "Kỹ sư phần mềm với hơn 3 năm kinh nghiệm phát triển ứng dụng web full-stack. Tập trung vào trải nghiệm người dùng, chất lượng code và quy trình làm việc theo Agile. Mong muốn đóng góp vào đội ngũ phát triển sản phẩm có tác động thực tế.",
+    "Chuyên gia CNTT (IT Specialist) với nhiều năm kinh nghiệm trong quản trị hệ thống, hạ tầng mạng và phát triển phần mềm. Thế mạnh chuyên sâu về tối ưu hóa hạ tầng mạng doanh nghiệp (MikroTik RouterOS v7), ảo hóa, triển khai giải pháp VPN bảo mật cao (WireGuard, Tailscale) và tự động hóa quy trình (Automation Scripts). Đồng thời là Full-stack Developer với Next.js 15, React 19, PHP. Hướng tới hệ sinh thái vận hành ổn định, tự động hóa tối đa và bảo mật cao cho doanh nghiệp.",
 
-  /**
-   * Thông tin cá nhân bổ sung (sidebar).
-   * Để "" hoặc [] để ẩn từng mục — xem src/README.md
-   */
   personalInfo: {
-    motto: "Học hỏi không ngừng, làm việc có trách nhiệm, coi trọng sự tử tế.",
+    motto: "Thích hệ điều hành Ubuntu Server.",
     softSkills: [
-      "Giao tiếp & thuyết trình",
-      "Làm việc nhóm & Agile",
-      "Giải quyết vấn đề",
-      "Tư duy phản biện",
-      "Quản lý thời gian",
+      "Lãnh đạo nhóm & phong trào",
+      "Làm việc nhóm",
+      "Tự nghiên cứu & giải quyết vấn đề",
+      "Trách nhiệm cao trong môi trường y tế",
     ],
-    interests: ["Đọc sách công nghệ", "Chạy bộ", "Mở source", "Nhiếp ảnh"],
+    interests: [
+      "Ubuntu Server",
+      "MikroTik RouterOS",
+      "VPN (WireGuard, Tailscale)",
+      "Open-source & Automation",
+    ],
     aspirations:
-      "Mong muốn gia nhập môi trường product-focused, được tham gia xây dựng sản phẩm có quy mô người dùng thật, phát triển lên Senior trong 2–3 năm tới.",
+      "Công việc mong muốn: Senior System Administrator / DevOps Engineer / Lead Developer.",
   },
 
+  /** Thêm/xóa dòng — icon có sẵn & cách thêm mạng khác: src/HuongDan.md */
   contact: [
-    { label: "email@example.com", href: "mailto:email@example.com", icon: "email" },
-    { label: "+84 900 000 000", href: "tel:+84900000000", icon: "phone" },
-    { label: "Hồ Chí Minh, Việt Nam", href: "#", icon: "location" },
+    { label: "0968.884.946", href: "tel:+84968884946", icon: "phone" },
+    { label: "github.com/ZakShinn", href: "https://github.com/ZakShinn", icon: "github" },
     {
-      label: "linkedin.com/in/username",
-      href: "https://linkedin.com/in/username",
-      icon: "linkedin",
+      label: "Facebook",
+      href: "https://www.facebook.com/profile.php?id=100006985387032",
+      icon: "facebook",
     },
-    { label: "github.com/username", href: "https://github.com/username", icon: "github" },
-    { label: "yourdomain.com", href: "https://yourdomain.com", icon: "website" },
-  ] satisfies ContactLink[],
+    { label: "Zalo · 0968.884.946", href: "https://zalo.me/0968884946", icon: "zalo" },
+  ] as ContactLink[],
 };

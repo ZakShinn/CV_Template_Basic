@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { avatarConfig, resolveAvatarSrc } from "@/avatar";
 import type { CVContent } from "@/resume";
 
@@ -13,7 +16,8 @@ function getInitials(name: string) {
 export function CVHeader({ data }: { data: CVContent }) {
   const initials = getInitials(data.personal.fullName);
   const avatarSrc = resolveAvatarSrc();
-  const showAvatar = avatarConfig.enabled && Boolean(avatarSrc);
+  const [imgError, setImgError] = useState(false);
+  const showAvatar = avatarConfig.enabled && Boolean(avatarSrc) && !imgError;
   const avatarAlt = avatarConfig.alt || data.personal.fullName;
 
   return (
@@ -41,6 +45,7 @@ export function CVHeader({ data }: { data: CVContent }) {
                   alt={avatarAlt}
                   className="h-full w-full"
                   style={{ objectFit: avatarConfig.objectFit }}
+                  onError={() => setImgError(true)}
                 />
               ) : (
                 <span

@@ -9,7 +9,7 @@ export type AvatarObjectFit = "cover" | "contain";
 
 export interface AvatarConfig {
   enabled: boolean;
-  /** Đường dẫn từ `public/`, vd: `/avatar/anh-cua-toi.jpg` */
+  /** Đường dẫn từ `public/` — mặc định: file `public/avatar/avatar.jpg` → `/avatar/avatar.jpg` */
   src: string;
   /** Trống = dùng họ tên từ resume-basic.ts */
   alt: string;
@@ -22,7 +22,7 @@ export const DEFAULT_AVATAR_SRC = "/avatar/avatar.jpg";
 export const avatarConfig: AvatarConfig = {
   enabled: true,
   src: DEFAULT_AVATAR_SRC,
-  alt: "Ảnh đại diện — thay bằng ảnh của bạn",
+  alt: "Võ Hoàng Hải Nghĩa",
   objectFit: "cover",
   hideInPrint: false,
 };
